@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TradingView Multi Sync</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { display: flex; width: 100vw; height: 100vh; overflow: hidden; background: #131722; }
+    /* Grafik sayısını değiştirmek istersen .chart-container kopyala; flex otomatik paylaşır */
+    .chart-container { flex: 1; height: 100vh; border-right: 1px solid #2a2e39; }
+    .chart-container:last-child { border-right: none; }
+    webview { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <!-- partition ile iki grafik de aynı oturumu (login) paylaşır ve kalıcıdır -->
+  <div class="chart-container">
+    <webview id="view1" src="https://www.tradingview.com/chart/" preload="./preload.js" partition="persist:tv"></webview>
+  </div>
+  <div class="chart-container">
+    <webview id="view2" src="https://www.tradingview.com/chart/" preload="./preload.js" partition="persist:tv"></webview>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
